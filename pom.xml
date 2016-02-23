@@ -38,12 +38,12 @@
         <java.source.version>1.8</java.source.version>
         <java.target.version>1.8</java.target.version>
         <slf4j.version>1.7.12</slf4j.version>
+        <github.global.server>github</github.global.server>
         <surefire.junit47.version>2.16</surefire.junit47.version>
         <maven.surefire.plugin.version>2.18.1</maven.surefire.plugin.version>
         <maven.compiler.plugin.version>3.2</maven.compiler.plugin.version>
         <maven.failsafe.plugin.version>2.16</maven.failsafe.plugin.version>
         <maven.source.plugin.version>2.4</maven.source.plugin.version>
-        <github.global.server>github</github.global.server>
     </properties>
 
     <scm>
@@ -52,14 +52,14 @@
 
     <distributionManagement>
         <!--<repository>-->
-            <!--<id>github</id>-->
-            <!--<name>GitHub Repository</name>-->
-            <!--<url>https://github.com/bigboss84/rs-api/mvn-repo/releases</url>-->
+        <!--<id>github</id>-->
+        <!--<name>GitHub Repository</name>-->
+        <!--<url>https://github.com/bigboss84/rs-api/mvn-repo/releases</url>-->
         <!--</repository>-->
         <!--<snapshotRepository>-->
-            <!--<id>github</id>-->
-            <!--<name>GitHub Repository (SNAPSHOT)</name>-->
-            <!--<url>https://github.com/bigboss84/rs-api/mvn-repo/snapshots</url>-->
+        <!--<id>github</id>-->
+        <!--<name>GitHub Repository (SNAPSHOT)</name>-->
+        <!--<url>https://github.com/bigboss84/rs-api/mvn-repo/snapshots</url>-->
         <!--</snapshotRepository>-->
         <repository>
             <id>internal.releases</id>
@@ -73,16 +73,16 @@
         </snapshotRepository>
     </distributionManagement>
 
-    <!--<repositories>-->
-    <!--<repository>-->
-    <!--<id>github</id>-->
-    <!--<url>https://raw.github.com/bigboss84/rs-api/mvn-repo/</url>-->
-    <!--<snapshots>-->
-    <!--<enabled>true</enabled>-->
-    <!--<updatePolicy>always</updatePolicy>-->
-    <!--</snapshots>-->
-    <!--</repository>-->
-    <!--</repositories>-->
+    <repositories>
+        <repository>
+            <id>rs-api-mvn-repo</id>
+            <url>https://raw.github.com/bigboss84/rs-api/mvn-repo/</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -103,11 +103,11 @@
 
         <extensions>
             <!--Enabling the use of SSH -->
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ssh-external</artifactId>
-                <version>1.0-beta-6</version>
-            </extension>
+            <!--<extension>-->
+                <!--<groupId>org.apache.maven.wagon</groupId>-->
+                <!--<artifactId>wagon-ssh-external</artifactId>-->
+                <!--<version>1.0-beta-6</version>-->
+            <!--</extension>-->
         </extensions>
 
         <pluginManagement>
@@ -186,20 +186,6 @@
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-source-plugin</artifactId>
-                    <version>2.3</version>
-                    <executions>
-                        <execution>
-                            <id>attach-sources</id>
-                            <goals>
-                                <goal>jar</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <executions>
                         <execution>
@@ -227,14 +213,15 @@
                     <configuration>
                         <message>Maven artifacts for ${project.version}</message>
                         <noJekyll>true</noJekyll>
-                        <outputDirectory>${project.build.directory}/mvn-repo</outputDirectory>
+                        <outputDirectory>${project.build.directory}/mvn-repo/snapshots</outputDirectory>
                         <branch>refs/heads/mvn-repo</branch>
                         <includes>
                             <include>**/*</include>
                         </includes>
-                        <merge>true</merge>
-                        <repositoryName>rs-api</repositoryName>
-                        <repositoryOwner>bigboss84</repositoryOwner>
+                        <!--<merge>true</merge>-->
+                        <!--<repositoryName>rs-api</repositoryName>-->
+                        <!--<repositoryOwner>bigboss84</repositoryOwner>-->
+                        <!--<branch>mvn-repo</branch>-->
                     </configuration>
                     <executions>
                         <execution>
