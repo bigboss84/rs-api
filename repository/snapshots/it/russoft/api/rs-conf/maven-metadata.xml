@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>it.russoft.api</groupId>
+  <artifactId>rs-conf</artifactId>
+  <versioning>
+    <versions>
+      <version>1.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20160229213738</lastUpdated>
+  </versioning>
+</metadata>
